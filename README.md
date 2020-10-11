@@ -9,4 +9,4 @@
 
 # Rechat APK do Simulador
 
-##### [Acesse aqui a documentação eo painel de configurações](https://github.com/ribaslucian/rechat-web)
+##### [Acesse aqui a documentação e o código do painel de configuração de pesquisas](https://github.com/ribaslucian/rechat-web)
