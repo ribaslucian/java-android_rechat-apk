@@ -62,9 +62,9 @@ public class NotificationHelper extends ContextWrapper {
     }
 
     public static void push(Context context, String title, String content) {
-        if (MainActivity.isAppRunning()) {
-            return;
-        }
+//        if (MainActivity.isAppRunning()) {
+//            return;
+//        }
 
         NotificationHelper notificationHelper = new NotificationHelper(context);
         NotificationCompat.Builder nb = notificationHelper.getChannelNotification(title, content);
