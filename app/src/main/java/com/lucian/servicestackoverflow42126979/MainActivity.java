@@ -11,10 +11,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.os.StrictMode;
+import androidx.preference.PreferenceManager;
+import android.se.omapi.Session;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.webkit.WebResourceRequest;
@@ -50,6 +53,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static SharedPreferences preferences;
     private static MainActivity self = null;
     private static NotificationService notificationService = null;
     private static WebSocketNotification webSocket = null;
@@ -76,10 +80,48 @@ public class MainActivity extends AppCompatActivity {
         webView.loadUrl("http://192.168.0.5:3000");
 
 
+
+
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("user_id", "123test");
+        editor.commit();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //        https://pt.stackoverflow.com/questions/69894/como-resolver-o-erro-networkonmainthreadexception
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
+
+
+//        preferences = getSharedPreferences("rechat", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putString("user_id", "text321");
+//        editor.commit();
+//        editor.apply();
+
+//        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+
+
 
 
 //        try {
@@ -106,6 +148,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+//        _Session s = new _Session(this);
+//        s.setusename("teste123");
+
+//        Log.d("__GET__", s.getusename());
 
 
 
@@ -117,39 +163,38 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-        try {
-
-            URL url = new URL("http://192.168.0.5:3000/api/get_notification");
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-//            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-//            readStream(in);
-
-
-            BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-
-
-            String content = "", line;
-
-            while ((line = rd.readLine()) != null) {
-                content += line;
-            }
-//            Log.d("__GET__", content);
-
-            JSONObject obj = new JSONObject(content);
-            Log.d("__GET__", obj.toString());
-
-
-            NotificationHelper.push(this, (String) obj.get("title"), (String) obj.get("content"));
-        } catch (NetworkOnMainThreadException | MalformedURLException e) {
-            Log.d("__GET", e.toString());
+//        try {
+//
+//            URL url = new URL("http://192.168.0.5:3000/api/get_notification/1");
+//            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+////            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+////            readStream(in);
+//
+//
+//            BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+//
+//
+//            String content = "", line;
+//
+//            while ((line = rd.readLine()) != null) {
+//                content += line;
+//            }
+////            Log.d("__GET__", content);
+//
+//            JSONObject obj = new JSONObject(content);
+//            Log.d("__GET__", obj.toString());
+//
+//
+////            NotificationHelper.push(this, (String) obj.get("title"), (String) obj.get("content"));
+//        } catch (NetworkOnMainThreadException | MalformedURLException e) {
+//            Log.d("__GET", e.toString());
+////            e.printStackTrace();
+//        } catch (IOException e) {
+//            Log.d("__GET", e.toString());
 //            e.printStackTrace();
-        } catch (IOException e) {
-            Log.d("__GET", e.toString());
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
 
 //        NotificationHelper.push(this,"Rechat", "Chefe: Menina de 13 anos morre na Alemanha por usar máscara e aspirar CO2.");
@@ -201,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
         // definir intervalo de 8 horas  em milissegundos
         // long intervalo = 8*60*60*1000;
 
-        long intervalo = 1000;
+        long intervalo = 10*1000;
 
         Intent tarefaIntent = new Intent(context, AlertReceiver.class);
         PendingIntent tarefaPendingIntent = PendingIntent.getBroadcast(context,4321, tarefaIntent,0);
