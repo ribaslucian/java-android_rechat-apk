@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 //         webView.loadUrl("http://54.207.155.116");
 //         webView.loadUrl("http://ec2-18-228-83-110.sa-east-1.compute.amazonaws.com/");
 //        webView.loadUrl("http://10.0.2.2:3000");
-        webView.loadUrl("http://192.168.0.5:3000");
+        webView.loadUrl("http://200.134.10.26");
 
 
 

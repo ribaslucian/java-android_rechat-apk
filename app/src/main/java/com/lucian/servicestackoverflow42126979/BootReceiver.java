@@ -17,7 +17,7 @@ public class BootReceiver extends BroadcastReceiver {
 
         MainActivity.startAlarms(context);
 
-        NotificationHelper.push(context, "Rechat", "Aplicativo iniciado no boot.");
+//        NotificationHelper.push(context, "Rechat", "Aplicativo iniciado no boot.");
     }
 
 }

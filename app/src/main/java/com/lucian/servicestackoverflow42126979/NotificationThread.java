@@ -28,7 +28,7 @@ public class NotificationThread extends Thread {
         SharedPreferences sharedPreferences = MainActivity.context.getSharedPreferences("rechat",  Context.MODE_PRIVATE);
         String user_id = sharedPreferences.getString("user_id","0");
 
-        Log.d("__GET__", user_id);
+//        Log.d("__GET__", user_id);
 
         if (user_id.equals("0")) {
             NotificationHelper.push(context, "ReChat", default_message);
@@ -36,7 +36,7 @@ public class NotificationThread extends Thread {
         }
 
         try {
-            URL url = new URL("http://192.168.0.5:3000/api/get_notification/" + user_id);
+            URL url = new URL("http://200.134.10.26/api/get_notification/" + user_id);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             String content = "", line;
