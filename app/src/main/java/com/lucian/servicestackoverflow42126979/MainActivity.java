@@ -82,10 +82,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("user_id", "123test");
-        editor.commit();
 
 
 
@@ -111,12 +107,21 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
 
+        preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.context);
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putString("user_id", "__user_id");
+//        editor.commit();
+//        editor.apply();
+
+
 
 //        preferences = getSharedPreferences("rechat", Context.MODE_PRIVATE);
 //        SharedPreferences.Editor editor = preferences.edit();
-//        editor.putString("user_id", "text321");
+//        editor.putString("user_id", "2");
 //        editor.commit();
 //        editor.apply();
+
+
 
 //        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -125,23 +130,25 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        try {
-//            URL url = new URL("http://192.168.0.5:3000/api/get_notification");
+//            URL url = new URL("http://192.168.0.5:3000/api/get_notification/2");
 //            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 //            connection.setRequestMethod("GET");
 //            connection.setDoOutput(true);
-//            connection.setConnectTimeout(5000);
-//            connection.setReadTimeout(5000);
+////            connection.setConnectTimeout(5000);
+////            connection.setReadTimeout(5000);
 //            connection.connect();
 //            BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-//            String content = "", line;
+////            String content = "", line;
+////
+////            while ((line = rd.readLine()) != null) {
+////                content += line + "\n";
+////            }
+////
+////            Log.d("__GET__", content);
 //
-//            while ((line = rd.readLine()) != null) {
-//                content += line + "\n";
-//            }
-//
-//            Log.d("__GET__", content);
+//            connection.disconnect();
 //        } catch (Exception e) {
-//            Log.d("__GET_ERROR", e.printStackTrace());
+//            Log.d("__GET_ERROR", e.getMessage());
 //            e.printStackTrace();
 //        }
 
@@ -165,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        try {
 //
-//            URL url = new URL("http://192.168.0.5:3000/api/get_notification/1");
+//            URL url = new URL("http://192.168.0.5:3000/api/get_notification/2");
 //            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 ////            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 ////            readStream(in);

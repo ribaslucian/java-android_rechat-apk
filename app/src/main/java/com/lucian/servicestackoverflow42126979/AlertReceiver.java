@@ -4,9 +4,20 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 
 import androidx.preference.PreferenceManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
 public class AlertReceiver extends BroadcastReceiver {
@@ -35,9 +46,9 @@ public class AlertReceiver extends BroadcastReceiver {
 
 
 
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String user_id = prefs.getString("user_id", "");
-        NotificationHelper.push(context, "Rechat", user_id);
+//        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+//        String user_id = prefs.getString("user_id", "");
+//        NotificationHelper.push(context, "Rechat", user_id);
 
 
 
@@ -52,6 +63,44 @@ public class AlertReceiver extends BroadcastReceiver {
 
 
 //        NotificationHelper.push(context, "Rechat", "Você pode ter novas mensagens.");
+
+
+
+
+//        try {
+//            URL url = new URL("http://192.168.0.5:3000/api/get_notification/2");
+//            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+//            BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+//            String content = "", line;
+//
+//            while ((line = rd.readLine()) != null)
+//                content += line;
+//
+//            JSONObject obj = new JSONObject(content);
+//            Log.d("__GET__", obj.toString());
+//
+//            Boolean notification = (Boolean) obj.get("notification");
+//            if (notification) {
+//                NotificationHelper.push(context, (String) obj.get("contact"), (String) obj.get("content"));
+//            } else {
+//                NotificationHelper.push(context, "ReChat", "Você pode ter novas mensagens.");
+//            }
+//
+////            NotificationHelper.push(this, (String) obj.get("title"), (String) obj.get("content"));
+//        } catch (Exception e) {
+//            Log.d("__GET", e.toString());
+//            e.printStackTrace();
+//            NotificationHelper.push(context, "ReChat(!)", "Você pode ter novas mensagens.");
+//        }
+
+
+
+        NotificationThread n = new NotificationThread(context);
+        n.start();
+
+
+
+
     }
 
 }
