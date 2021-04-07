@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         webView = findViewById(R.id.webview);
-        webView.clearCache(true);
+//        webView.clearCache(true);
         webView.getSettings().setJavaScriptEnabled(true);
 
 //         webView.loadUrl("http://54.207.155.116");
