@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import androidx.preference.PreferenceManager;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -24,9 +26,11 @@ public class NotificationThread extends Thread {
         String default_message = "Você tem novas mensagens, quer dar uma olhada?";
 
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String user_id = preferences.getString("user_id","0");
 
-        SharedPreferences sharedPreferences = MainActivity.context.getSharedPreferences("rechat",  Context.MODE_PRIVATE);
-        String user_id = sharedPreferences.getString("user_id","0");
+//        SharedPreferences sharedPreferences = MainActivity.context.getSharedPreferences("rechat",  Context.MODE_PRIVATE);
+//        String user_id = sharedPreferences.getString("user_id","0");
 
 //        Log.d("__GET__", user_id);
 

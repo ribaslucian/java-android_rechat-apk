@@ -29,15 +29,23 @@ public class WebAppInterface {
 //        editor.commit();
 //        editor.apply();
 
-        SharedPreferences sharedPreferences = MainActivity.context.getSharedPreferences("rechat",  Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("user_id", user_id);
-        editor.commit();
+//        SharedPreferences sharedPreferences = MainActivity.context.getSharedPreferences("rechat",  Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("user_id", user_id);
+//        editor.commit();
 
 //        SharedPreferences sharedPreferences = MainActivity.context.getSharedPreferences("rechat",  Context.MODE_PRIVATE);
 //        String _user_id = MainActivity.preferences.getString("user_id","0");
 
 //        Toast.makeText(mContext, "Setando id do usuariooo " + _user_id, Toast.LENGTH_SHORT).show();
 //        Toast.makeText(mContext, "Setando id do usuario " + user_id, Toast.LENGTH_SHORT).show();
+
+
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("user_id", user_id);
+        editor.commit();
+//        editor.apply();
     }
 }
