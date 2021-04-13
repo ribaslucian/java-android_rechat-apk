@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         webView = findViewById(R.id.webview);
-//        webView.clearCache(true);
+        webView.clearCache(false);
         webView.getSettings().setJavaScriptEnabled(true);
 
 //         webView.loadUrl("http://54.207.155.116");
@@ -239,9 +239,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void startAlarms(Context context) {
-        if (alarmStarted) {
-            return;
-        }
+//        if (alarmStarted) {
+//            return;
+//        }
 
         //Definir início para as 10 horas
 //        Calendar calendar = Calendar.getInstance();
@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
         // definir intervalo de 8 horas  em milissegundos
         // long intervalo = 8*60*60*1000;
 
-        long intervalo = 10*1000;
+        long intervalo = 3*60*1000;
 
         Intent tarefaIntent = new Intent(context, AlertReceiver.class);
         PendingIntent tarefaPendingIntent = PendingIntent.getBroadcast(context,4321, tarefaIntent,0);

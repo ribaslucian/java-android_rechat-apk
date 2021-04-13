@@ -22,8 +22,13 @@ public class NotificationThread extends Thread {
     }
 
     public void run() {
-
         String default_message = "Você tem novas mensagens, quer dar uma olhada?";
+//        NotificationHelper.push(context, "ReChat", default_message);
+
+        if (MainActivity.isAppRunning()) {
+            return;
+        }
+
 
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
