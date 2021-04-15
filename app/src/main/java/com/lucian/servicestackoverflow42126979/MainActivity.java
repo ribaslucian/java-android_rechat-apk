@@ -12,6 +12,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
@@ -20,9 +21,12 @@ import androidx.preference.PreferenceManager;
 import android.se.omapi.Session;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,11 +58,12 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
 
     public static SharedPreferences preferences;
-    private static MainActivity self = null;
+    public static MainActivity self = null;
     private static NotificationService notificationService = null;
     private static WebSocketNotification webSocket = null;
     private WebView webView;
     public static Boolean alarmStarted = false;
+    public static String url = "http://192.168.0.5:3000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,38 +77,46 @@ public class MainActivity extends AppCompatActivity {
 
 
         webView = findViewById(R.id.webview);
-        webView.clearCache(false);
+//        webView.clearCache(false);
         webView.getSettings().setJavaScriptEnabled(true);
 
 //         webView.loadUrl("http://54.207.155.116");
 //         webView.loadUrl("http://ec2-18-228-83-110.sa-east-1.compute.amazonaws.com/");
 //        webView.loadUrl("http://10.0.2.2:3000");
-        webView.loadUrl("http://200.134.10.26");
+//        webView.loadUrl("http://192.168.0.5:3000");
+//        webView.loadUrl("http://200.134.10.26");
+
+
+//        WebView webview = new WebView(this);
+//        webview.setWebViewClient(new WebViewClient() {
+//            @Override
+//            public boolean shouldOverrideUrlLoading(WebView view, String url)
+//            {
+//                view.loadUrl(url); //this is controversial - see comments and other answers
+//                return true;
+//            }
+//        });
+//        setContentView(webview);
+//        webview.loadUrl("http://192.168.0.5:3000");
 
 
 
 
 
 
+        CookieManager.getInstance().setAcceptCookie(true);
+        CookieSyncManager.createInstance(this);
+        CookieManager cookieManager = CookieManager.getInstance();
+//        cookieManager.removeAllCookie();
+        cookieManager.setAcceptCookie(true);
+//        CookieManager.getInstance().setAcceptThirdPartyCookies(true);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+//        String cookieString = "nIbCjAkxyQK0RRQ7AhVXO4pTn5jpWk7woKeDf6cHSfGlRx%2BUVhz8PHtGlEeXAPiSr4Npe5WWMKpgif7fDUnXx8cC3NBpNkFec6ADPff8Gkm%2Bb0nEcl8CDj%2BFxJp%2FlsEgIQQLziIsOnnSGbimxKvPEGjyGfqsgR%2FH3AxcOSQ8UIGi0hmOELDNDlsIz0NqHvIirauEKSd0Qt4RpZwpKs9%2FrukqvpmmzTD7DjdximtLRVQe%2FEi7b5bLZy0DElH2a9vP32WAZ22jLYR4m45sGTf9lFFVyXc9ATGJQxDg89BxoAOYFyeh7yD4iOrkwij3D6FeGIm74po31QwjtRvMIOvkTVTBPK58MLA5uNuo423BOW1yeSEdpJZq4HoGk1Qy2O1%2B2WdsYmc9dGsyD4Xc%2BvN6rVd2R5acw2JfLW%2Fj54HoNaopt61U%2FGvwpfWXNDdsyG0ll2wILnHJuTpv31YhCM0fJnp5jrNA91RB1ZQv53n1lm%2FLI1bwUFTORk2OcInEaWWkBvCZqlByOxMBvyQxVBwU%2BITrCotouU8Ts6piq%2FdEteKJY2ypOjybE4ybOe4Uojo0A3qs2jGuaXONncB8zzZ%2BKLmgLHOBW50kfcLWOoSpx5xGjagRCttUue8%3D--luAaQOT1HwU%2FuPjp--r0paTghFbqAxqwF7J%2FgDyw%3D%3D; path=/";
+//        CookieManager.getInstance().setCookie(url, "rechat_session=" + cookieString);
 
 //        https://pt.stackoverflow.com/questions/69894/como-resolver-o-erro-networkonmainthreadexception
-
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -125,6 +138,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+
+
+
+
+
 
 
 
@@ -216,6 +235,7 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+//                view.loadUrl("http://192.168.0.5:3000"); //this is controversial - see comments and other answers
                 return false;
             }
 
@@ -223,9 +243,45 @@ public class MainActivity extends AppCompatActivity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 return false;
             }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+
+                // setar cookie se existir
+                CookieManager cookieManager = CookieManager.getInstance();
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.context);
+                String rechat_session_cookie = preferences.getString("rechat_session", null);
+
+                if (rechat_session_cookie != null) {
+                    Toast.makeText(MainActivity.self, "rechat_session", Toast.LENGTH_SHORT).show();
+                    cookieManager.setCookie(MainActivity.url, "rechat_session=" + rechat_session_cookie + "; path=/");
+//            url = url + "/voluntary";
+                }
+            }
         });
 
+
+
+
+
+
+//        // setar cookie se existir
+//        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.context);
+//        String rechat_session_cookie = preferences.getString("rechat_session", null);
+//
+//        Toast.makeText(this, rechat_session_cookie, Toast.LENGTH_SHORT).show();
+//        if (rechat_session_cookie != null) {
+//            Toast.makeText(this, "rechat_session", Toast.LENGTH_SHORT).show();
+//            cookieManager.setCookie(MainActivity.url, "rechat_session=" + rechat_session_cookie + "; path=/");
+////            url = url + "/voluntary";
+//        }
+
+
+
+
         startAlarms(MainActivity.context);
+        webView.loadUrl(url);
     }
 
     @Override
