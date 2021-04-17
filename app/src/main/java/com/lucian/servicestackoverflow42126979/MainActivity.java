@@ -1,5 +1,6 @@
 package com.lucian.servicestackoverflow42126979;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -244,21 +245,23 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
 
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
+//            @Override
+//            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+//                super.onPageStarted(view, url, favicon);
 
-                // setar cookie se existir
-                CookieManager cookieManager = CookieManager.getInstance();
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.context);
-                String rechat_session_cookie = preferences.getString("rechat_session", null);
+//                // setar cookie se existir
+//                CookieManager cookieManager = CookieManager.getInstance();
+//                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.context);
+//                String rechat_session_cookie = preferences.getString("rechat_session", null);
+//
+//                if (rechat_session_cookie != null) {
+//                    Toast.makeText(MainActivity.self, "rechat_session", Toast.LENGTH_SHORT).show();
+//                    cookieManager.setCookie(MainActivity.url, "rechat_session=" + rechat_session_cookie + "; path=/");
+////            url = url + "/voluntary";
+//                }
+//            }
 
-                if (rechat_session_cookie != null) {
-                    Toast.makeText(MainActivity.self, "rechat_session", Toast.LENGTH_SHORT).show();
-                    cookieManager.setCookie(MainActivity.url, "rechat_session=" + rechat_session_cookie + "; path=/");
-//            url = url + "/voluntary";
-                }
-            }
+
         });
 
 

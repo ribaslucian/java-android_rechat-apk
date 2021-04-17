@@ -53,33 +53,33 @@ public class WebAppInterface {
 
 
 
-    // logout
-    @JavascriptInterface
-    public void login(String cookie) {
-        Toast.makeText(mContext, "Efetuando login no cookie webview", Toast.LENGTH_SHORT).show();
+//    // logout
+//    @JavascriptInterface
+//    public void login(String cookie) {
+//        Toast.makeText(mContext, "Efetuando login no cookie webview", Toast.LENGTH_SHORT).show();
+//
+//        // salvar cookie no celular
+//        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.context);
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putString("rechat_session", cookie);
+//        editor.commit();
+//
+//        // inserindo cookie no navegador
+//        CookieSyncManager.createInstance(MainActivity.self);
+//        CookieManager cookieManager = CookieManager.getInstance();
+//        CookieManager.getInstance().setCookie(MainActivity.url, "rechat_session=" + cookie + "; path=/");
+//    }
 
-        // salvar cookie no celular
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.context);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("rechat_session", cookie);
-        editor.commit();
-
-        // inserindo cookie no navegador
-        CookieSyncManager.createInstance(MainActivity.self);
-        CookieManager cookieManager = CookieManager.getInstance();
-        CookieManager.getInstance().setCookie(MainActivity.url, "rechat_session=" + cookie + "; path=/");
-    }
-
-    // logout
+//    // logout
     @JavascriptInterface
     public void logout() {
-        Toast.makeText(mContext, "Efetuando LOGOUT no cookie webview", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(mContext, "Efetuando LOGOUT no cookie webview", Toast.LENGTH_SHORT).show();
 
         // limpar cookie do celular
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.context);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.remove("rechat_session");
-        editor.commit();
+//        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.context);
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.remove("rechat_session");
+//        editor.commit();
 
         // limpando cookie
         CookieSyncManager.createInstance(MainActivity.self);
