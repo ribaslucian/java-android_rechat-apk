@@ -1,4 +1,4 @@
-package com.lucian.servicestackoverflow42126979;
+package com.lucian.utfpr;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -34,7 +34,7 @@ public class NotificationThread extends Thread {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         String user_id = preferences.getString("user_id","0");
 
-//        SharedPreferences sharedPreferences = MainActivity.context.getSharedPreferences("rechat",  Context.MODE_PRIVATE);
+//        SharedPreferences sharedPreferences = MainActivity.context.getSharedPreferences("utfpr",  Context.MODE_PRIVATE);
 //        String user_id = sharedPreferences.getString("user_id","0");
 
 //        Log.d("__GET__", user_id);

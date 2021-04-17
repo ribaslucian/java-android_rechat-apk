@@ -1,4 +1,4 @@
-package com.lucian.servicestackoverflow42126979;
+package com.lucian.utfpr;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.lucian.servicestackoverflow42126979", appContext.getPackageName());
+        assertEquals("com.lucian.utfpr", appContext.getPackageName());
     }
 }

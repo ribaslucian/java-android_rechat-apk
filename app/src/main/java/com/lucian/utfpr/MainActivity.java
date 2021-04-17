@@ -1,4 +1,4 @@
-package com.lucian.servicestackoverflow42126979;
+package com.lucian.utfpr;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//        preferences = getSharedPreferences("rechat", Context.MODE_PRIVATE);
+//        preferences = getSharedPreferences("utfpr", Context.MODE_PRIVATE);
 //        SharedPreferences.Editor editor = preferences.edit();
 //        editor.putString("user_id", "2");
 //        editor.commit();
@@ -314,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
 
-        String packageName = "com.lucian.servicestackoverflow42126979";
+        String packageName = "com.lucian.utfpr";
         Context context = MainActivity.context;
 
 

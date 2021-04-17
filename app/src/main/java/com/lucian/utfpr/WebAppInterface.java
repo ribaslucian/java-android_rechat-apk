@@ -1,4 +1,4 @@
-package com.lucian.servicestackoverflow42126979;
+package com.lucian.utfpr;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -32,12 +32,12 @@ public class WebAppInterface {
 //        editor.commit();
 //        editor.apply();
 
-//        SharedPreferences sharedPreferences = MainActivity.context.getSharedPreferences("rechat",  Context.MODE_PRIVATE);
+//        SharedPreferences sharedPreferences = MainActivity.context.getSharedPreferences("utfpr",  Context.MODE_PRIVATE);
 //        SharedPreferences.Editor editor = sharedPreferences.edit();
 //        editor.putString("user_id", user_id);
 //        editor.commit();
 
-//        SharedPreferences sharedPreferences = MainActivity.context.getSharedPreferences("rechat",  Context.MODE_PRIVATE);
+//        SharedPreferences sharedPreferences = MainActivity.context.getSharedPreferences("utfpr",  Context.MODE_PRIVATE);
 //        String _user_id = MainActivity.preferences.getString("user_id","0");
 
 //        Toast.makeText(mContext, "Setando id do usuariooo " + _user_id, Toast.LENGTH_SHORT).show();

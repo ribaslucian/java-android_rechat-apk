@@ -1,10 +1,8 @@
-package com.lucian.servicestackoverflow42126979;
+package com.lucian.utfpr;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-
-import java.util.Calendar;
 
 public class BootReceiver extends BroadcastReceiver {
     @Override

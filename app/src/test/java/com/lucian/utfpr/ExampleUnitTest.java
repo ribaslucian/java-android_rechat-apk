@@ -1,4 +1,4 @@
-package com.lucian.servicestackoverflow42126979;
+package com.lucian.utfpr;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.lucian.servicestackoverflow42126979;
+package com.lucian.utfpr;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -17,7 +17,7 @@ public class AlertReceiver extends BroadcastReceiver {
 //        String title = s.getusename();.
 
 //        try {
-//            SharedPreferences sharedPreferences = context.getSharedPreferences("rechat",  Context.MODE_PRIVATE);
+//            SharedPreferences sharedPreferences = context.getSharedPreferences("utfpr",  Context.MODE_PRIVATE);
 //            String result = sharedPreferences.getString("user_id","");
 //            NotificationHelper.push(context, result, "Você pode ter novas mensagens.");
 //
