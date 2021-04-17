@@ -313,7 +313,7 @@ public class MainActivity extends AppCompatActivity {
         // definir intervalo de 8 horas  em milissegundos
         // long intervalo = 8*60*60*1000;
 
-        long intervalo = 3*60*1000;
+        long intervalo = 6*60*1000;
 
         Intent tarefaIntent = new Intent(context, AlertReceiver.class);
         PendingIntent tarefaPendingIntent = PendingIntent.getBroadcast(context,4321, tarefaIntent,0);
