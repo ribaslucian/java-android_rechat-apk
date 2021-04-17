@@ -3,21 +3,6 @@ package com.lucian.servicestackoverflow42126979;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.NetworkOnMainThreadException;
-import android.util.Log;
-
-import androidx.preference.PreferenceManager;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 
 public class AlertReceiver extends BroadcastReceiver {

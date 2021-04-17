@@ -11,8 +11,6 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
-import java.util.Random;
-
 
 public class NotificationHelper extends ContextWrapper {
     public static final String channelID = "RechatChannelID";

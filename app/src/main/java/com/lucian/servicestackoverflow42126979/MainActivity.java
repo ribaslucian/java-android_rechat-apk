@@ -1,49 +1,32 @@
 package com.lucian.servicestackoverflow42126979;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import android.app.ActivityManager;
 import android.app.AlarmManager;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.NetworkOnMainThreadException;
 import android.os.StrictMode;
 import androidx.preference.PreferenceManager;
-import android.se.omapi.Session;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Calendar;
@@ -53,9 +36,6 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import okhttp3.Request;
-import okhttp3.Response;
-
 public class MainActivity extends AppCompatActivity {
 
     public static SharedPreferences preferences;
@@ -64,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private static WebSocketNotification webSocket = null;
     private WebView webView;
     public static Boolean alarmStarted = false;
-    public static String url = "http://192.168.0.5:3000";
+    public static String url = "http://200.134.10.26";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

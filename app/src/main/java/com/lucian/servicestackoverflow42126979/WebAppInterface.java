@@ -2,7 +2,6 @@ package com.lucian.servicestackoverflow42126979;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.JavascriptInterface;
