@@ -13,6 +13,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import androidx.preference.PreferenceManager;
+
+import android.util.Log;
 import android.view.KeyEvent;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
@@ -278,9 +280,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void startAlarms(Context context) {
-//        if (alarmStarted) {
-//            return;
-//        }
+        if (alarmStarted) {
+            return;
+        }
 
         //Definir início para as 10 horas
 //        Calendar calendar = Calendar.getInstance();
@@ -293,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
         // definir intervalo de 8 horas  em milissegundos
         // long intervalo = 8*60*60*1000;
 
-        long intervalo = 6*60*1000;
+        long intervalo = 4*60*1000;
 
         Intent tarefaIntent = new Intent(context, AlertReceiver.class);
         PendingIntent tarefaPendingIntent = PendingIntent.getBroadcast(context,4321, tarefaIntent,0);
@@ -314,15 +316,19 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
 
-        String packageName = "com.lucian.utfpr";
+//        String packageName = "com.lucian.utfpr";
+        String packageName = "com.lucian";
         Context context = MainActivity.context;
 
 
         final ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         final List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();
+
         if (procInfos != null)
         {
             for (final ActivityManager.RunningAppProcessInfo processInfo : procInfos) {
+
+//                Log.d("__DEBUG", processInfo.processName);
                 if (processInfo.processName.equals(packageName)) {
                     return true;
                 }
